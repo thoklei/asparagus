@@ -1,88 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Topshelf;
-
-//namespace FileService
-//{
-//    class Program
-//    {
-//        static void Main(string[] args)
-//        {
-//            string path = string.Empty;
-//            int fileAmount = 10;
-
-
-//            HostFactory.New(x =>
-//            {
-
-//                x.RunAsPrompt();
-//                // x.RunAsLocalSystem();
-
-
-//                x.EnablePauseAndContinue();
-//                x.EnableShutdown();
-
-//                x.SetServiceName("DirCheck");
-//                x.SetDisplayName("DirectoryCheck");
-//                x.SetInstanceName("DirCheck");
-//                x.SetDescription("Check directory and move files if amount >100");
-
-//                x.Service<Check>(sc =>
-//                {
-//                    sc.ConstructUsing(() => new Check());
-
-//                    // the start and stop methods for the service
-//                    sc.WhenStarted(s => s.Start());
-//                    sc.WhenStopped(s => s.Stop());
-
-//                    //// optional pause/continue methods if used
-//                    //sc.WhenPaused(s => s.Pause());
-//                    //sc.WhenContinued(s => s.Continue());
-
-//                    //// optional, when shutdown is supported
-//                    //sc.WhenShutdown(s => s.Shutdown());
-
-//                });
-
-//                x.StartAutomatically(); // Start the service automatically
-//                x.StartAutomaticallyDelayed(); // Automatic (Delayed) -- only available on .NET 4.0 or later
-//                //x.StartManually(); // Start the service manually
-//                //x.Disabled(); // install the service as disabled
-
-//                x.OnException(ex =>
-//                {
-//                    // Do something with the exception
-//                        // Log it
-//                });
-
-//                x.AddCommandLineDefinition("path", v => path = v);
-//                x.AddCommandLineDefinition("fileAmount", v => fileAmount = Int32.Parse(v));
-
-
-//                x.EnableServiceRecovery(r =>
-//                {
-//                    //you can have up to three of these
-//                    r.RestartComputer(5, "message");
-//                    r.RestartService(0);
-//                    //the last one will act for all subsequent failures
-//                    r.RunProgram(1, "notepad.exe"); // run a program
-//                    //should this be true for crashed or non-zero exits
-//                    r.OnCrashOnly();
-
-//                    //number of days until the error count resets
-//                    r.SetResetPeriod(1);
-//                });
-
-//            });
-//        }
-//    }
-
-//}
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -95,15 +11,18 @@ namespace DirCheck
     class Program
     {
         //public static string sourceFolder = @"C:\Users\Richard\Desktop\source";
-        public static string sourceFolder = @"C:\Users\Hermeler\Desktop\source";
+        // fore tests: public static string sourceFolder = @"C:\Users\Hermeler\Desktop\source";
+        public static string sourceFolder = @"C:\ATS\Images";
         // public static string destinationFolder = @"C:\Users\Richard\Desktop\destination";
-        public static string destinationFolder = @"C:\Users\Hermeler\Desktop\destination";
+        // public static string destinationFolder = @"C:\Users\Hermeler\Desktop\destination";
+        public static string destinationFolder = @"E:\ATS\Images";
+
 
 
         static void Main(string[] args)
         {
-            FileGenerator fileGenerator = new FileGenerator();
-            fileGenerator.Run();
+            // FileGenerator fileGenerator = new FileGenerator();
+            // fileGenerator.Run();
 
             var exitCode = HostFactory.Run(x =>
             {
@@ -114,11 +33,18 @@ namespace DirCheck
                     s.WhenStopped(check => check.Stop());
                 });
 
+                x.StartAutomatically(); // Start the service automatically
+
+                // TODO:
+                // x.AddCommandLineDefinition("path", v => path = v);
+                // x.AddCommandLineDefinition("fileAmount", v => fileAmount = Int32.Parse(v));
+
                 x.RunAsLocalSystem();
                 x.SetServiceName("DirCheck");
                 x.SetDisplayName("Directory Check");
-                x.SetDescription("Check directory and move files");
+                x.SetDescription("Check directory and move files \nMAKE SURE 'E:/ATS/Images' IS AVAILABLE");
             });
+
 
             int exitCodeValue = (int)Convert.ChangeType(exitCode, exitCode.GetTypeCode());
             Environment.ExitCode = exitCodeValue;
