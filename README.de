@@ -1,0 +1,11 @@
+Problem:
+Images are created in a specific folder on the C:/ hard disk. Unfortunately, 
+the C:/ disk is full within a few minutes and the computer can no longer work properly.
+
+Temporary solution:
+Move the images to an external drive E:/, when they were created on the hard drive.
+
+Problems and future work:
+It would be nice if we could send the collected data to our university server via a secure SSL connection.
+But the computer probably generates images faster than they are sent due to a slow Internet connection. 
+We could temporarily move them to an external hard drive, compress/zip them overnight and send them afterwards. 
