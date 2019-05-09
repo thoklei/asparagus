@@ -42,9 +42,9 @@ namespace DirCheck
             {
                 FileInfo fi = new FileInfo(file);
 
-                if (fi.LastAccessTime < DateTime.Now.AddMinutes(-5))
+                if (fi.LastAccessTime < DateTime.Now.AddMinutes(-15))
                 {
-                    Console.WriteLine(file + "  >  " + Path.Combine(destinationFolder, Path.GetFileName(file)));
+                    // Console.WriteLine(file + "  >  " + Path.Combine(destinationFolder, Path.GetFileName(file)));
                     File.Move(file, Path.Combine(destinationFolder, Path.GetFileName(file)));
                 }
             }
