@@ -1,4 +1,4 @@
-## Friday, June 21, 2019 (Filename information(!), Semi-supervised Learning, Data Augmentation, Single Image Super-Super Resolution)
+# Friday, June 21, 2019 (Filename information(!), Semi-supervised Learning, Data Augmentation, Single Image Super-Super Resolution)
 
 Attendants: Axel, Richard, Malin, Luana, Maren, Josefine, Katharina
 
@@ -9,7 +9,6 @@ Attendants: Axel, Richard, Malin, Luana, Maren, Josefine, Katharina
 2. presentation from Luana (Data Augmentation, Super Resolution)
 3. presentation from Josefine (Semi-supervised learning)
 4. report about visit to Querdel
-
 
 
 ## Data collection
@@ -24,7 +23,6 @@ Attendants: Axel, Richard, Malin, Luana, Maren, Josefine, Katharina
   - 873: constant number for one asparagus piece
 
 
-
 ## Semi-supervised learning
 
 Link to presentation:
@@ -36,6 +34,7 @@ https://tinyurl.com/yydup2b7
 Link to presentation:
 https://tinyurl.com/y2mjm49b
 (Short description of data augmentation methods, and overview of current SISR algorithms)
+
 
 ## Visit to Querdel
 
